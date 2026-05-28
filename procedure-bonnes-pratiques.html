@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procédure et bonnes pratiques - Intranet DSI</title>
+    <style>
+        :root {
+            --primary-gold: #c49a45;
+            --dark-text: #1a1a1a;
+            --light-bg: #fdfbf9;
+            --white-card: #ffffff;
+            --border-color: #e5e5e5;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            margin: 0;
+            padding: 20px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid var(--primary-gold);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        .logo {
+            max-height: 70px;
+            width: auto;
+        }
+
+        h1 {
+            font-size: 22px;
+            font-weight: 600;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--dark-text);
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #666;
+            margin-top: 30px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        /* Nouvelle grille pour forcer 1 élément par ligne */
+        .grid-vertical {
+            display: grid;
+            grid-template-columns: 1fr; 
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .card {
+            background-color: var(--white-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 18px 15px;
+            text-decoration: none;
+            color: var(--dark-text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        /* Nouveau style pour les cartes en longueur (1 par ligne) */
+        .card-horizontal {
+            flex-direction: row;
+            align-items: center;
+            text-align: left;
+            padding: 15px 20px;
+            gap: 20px;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(196, 154, 69, 0.15);
+            border-color: var(--primary-gold);
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 15px;
+            fill: none;
+            stroke: var(--primary-gold);
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* Ajustement de l'icône pour le format horizontal */
+        .card-horizontal .card-icon {
+            margin-bottom: 0;
+            width: 30px;
+            height: 30px;
+            flex-shrink: 0;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        /* Ajustement du titre pour le format horizontal */
+        .card-horizontal .card-title {
+            margin-bottom: 0;
+            font-size: 15px;
+        }
+
+        .card-action {
+            font-size: 12px;
+            color: var(--primary-gold);
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-top: auto;
+            letter-spacing: 0.5px;
+        }
+
+        /* Ajustement de l'action pour la pousser à droite sur le format horizontal */
+        .card-horizontal .card-action {
+            margin-top: 0;
+            margin-left: auto;
+            white-space: nowrap;
+        }
+
+        .content-box {
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        footer {
+            margin-top: 30px;
+            padding-top: 15px;
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+            border-top: 1px solid var(--border-color);
+            width: 100%;
+            max-width: 900px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="logo-mairie-montmagny.png" alt="Logo Ville de Montmagny" class="logo">
+            <h1>DSI - Procédure et bonnes pratiques</h1>
+        </header>
+
+
+        <!-- NOUVELLE SECTION : Fiches Pratiques (1 par ligne) -->
+        <div class="section-title">Guides et Fiches Pratiques</div>
+        <div class="grid-vertical">
+            
+            <a href="docs/MONTMAGNY_Configuration_Mobile_Outlook.pdf" class="card card-horizontal" target="_blank">
+                <svg class="card-icon" viewBox="0 0 24 24">
+                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                    <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                </svg>
+                <div class="card-title">Comment configurer la messagerie de la mairie sur mon smartphone ?</div>
+                <div class="card-action">Consulter (PDF) &rarr;</div>
+            </a>
+
+            <a href="docs/Montmagny_SE CONNECTER AU VPN.pdf" class="card card-horizontal" target="_blank">
+                <svg class="card-icon" viewBox="0 0 24 24">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+                <div class="card-title">Comment connecter mon ordinateur portable au VPN ?</div>
+                <div class="card-action">Consulter (PDF) &rarr;</div>
+            </a>
+
+            <a href="chemin/vers/guide_email_suspect.pdf" class="card card-horizontal" target="_blank">
+                <svg class="card-icon" viewBox="0 0 24 24">
+                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                    <line x1="12" y1="9" x2="12" y2="13"></line>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+                <div class="card-title">Guide des bonnes pratiques : comment repérer un e-mail suspect ?</div>
+                <div class="card-action">Consulter (PDF) &rarr;</div>
+            </a>
+
+            <a href="chemin/vers/archivage_nettoyage_mails.pdf" class="card card-horizontal" target="_blank">
+                <svg class="card-icon" viewBox="0 0 24 24">
+                    <polyline points="21 8 21 21 3 21 3 8"></polyline>
+                    <rect x="1" y="3" width="22" height="5"></rect>
+                    <line x1="10" y1="12" x2="14" y2="12"></line>
+                </svg>
+                <div class="card-title">Procédure pour archiver ses mails Outlook</div>
+                <div class="card-action">Consulter (PDF) &rarr;</div>
+            </a>
+
+                        <a href="docs/Montmagny_Création d'un mot de passe.pdf" class="card card-horizontal" target="_blank">
+                <svg class="card-icon" viewBox="0 0 24 24">
+                    <polyline points="21 8 21 21 3 21 3 8"></polyline>
+                    <rect x="1" y="3" width="22" height="5"></rect>
+                    <line x1="10" y1="12" x2="14" y2="12"></line>
+                </svg>
+                <div class="card-title">Comment choisir un bon mot de passe</div>
+                <div class="card-action">Consulter (PDF) &rarr;</div>
+            </a>
+
+        </div>
+
+        <div class="section-title">Accès rapide</div>
+        <div class="grid">
+            <a href="gemini-code-1779879297725.html" class="card" target="_self">
+                <svg class="card-icon" viewBox="0 0 24 24">
+                    <path d="M10 20v-6h4v6m-2-14l-7 7h4v6h6v-6h4l-7-7z"></path>
+                </svg>
+                <div class="card-title">Retour à l’accueil</div>
+                <div class="card-action">Page principale &rarr;</div>
+            </a>
+
+            <a href="mailto:informatique@ville-montmagny.fr" class="card">
+                <svg class="card-icon" viewBox="0 0 24 24">
+                    <path d="M4 6h16v12H4z"></path>
+                    <polyline points="4,6 12,13 20,6"></polyline>
+                </svg>
+                <div class="card-title">Contact DSI</div>
+                <div class="card-action">Envoyer un email &rarr;</div>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 DSI - Ville de Montmagny | Procédure et bonnes pratiques
+    </footer>
+</body>
+</html>

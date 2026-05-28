@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intranet DSI - Ville de Montmagny</title>
+    <style>
+        /* Définition des couleurs basées sur le logo */
+        :root {
+            --primary-gold: #c49a45;
+            --dark-text: #1a1a1a;
+            --light-bg: #fdfbf9;
+            --white-card: #ffffff;
+            --border-color: #e5e5e5;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            margin: 0;
+            padding: 20px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        /* En-tête */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid var(--primary-gold);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        .logo {
+            max-height: 70px;
+            width: auto;
+        }
+
+        h1 {
+            font-size: 22px;
+            font-weight: 600;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--dark-text);
+        }
+
+        /* Sections */
+        .section-title {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #666;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        /* Cartes de liens */
+        .card {
+            background-color: var(--white-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 18px 15px;
+            text-decoration: none;
+            color: var(--dark-text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(196, 154, 69, 0.15);
+            border-color: var(--primary-gold);
+        }
+
+        /* Icônes SVG basiques */
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 15px;
+            fill: none;
+            stroke: var(--primary-gold);
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .card-action {
+            font-size: 12px;
+            color: var(--primary-gold);
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-top: auto;
+            letter-spacing: 0.5px;
+        }
+
+        /* Carte principale osTicket */
+        .osticket-card {
+            grid-column: 1 / -1;
+            flex-direction: row;
+            justify-content: center;
+            gap: 25px;
+            padding: 20px;
+            background-color: #fffaf0;
+            border: 1.5px solid var(--primary-gold);
+        }
+
+        .osticket-card .card-title {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .osticket-card .card-text-container {
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Pied de page */
+        footer {
+            margin-top: 0;
+            padding-top: 8px;
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+            border-top: 1px solid var(--border-color);
+            width: 100%;
+            max-width: 900px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- En-tête avec Logo -->
+        <header>
+            <img src="logo-mairie-montmagny.png" alt="Logo Ville de Montmagny" class="logo">
+            <h1>Intranet DSI - Ville de Montmagny</h1>
+        </header>
+
+        <!-- Section Ticketing -->
+        <div class="section-title">Aide et Ticketing</div>
+        <div class="grid">
+            <a href="http://infotech-support/" class="card osticket-card" target="_blank">
+                <svg class="card-icon" viewBox="0 0 24 24">
+                    <path d="M15 5.5a2.5 2.5 0 0 1-5 0V5h5v.5zM4 10h16v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-9zM4 10V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2"></path>
+                    <line x1="8" y1="14" x2="16" y2="14"></line>
+                    <line x1="8" y1="17" x2="12" y2="17"></line>
+                </svg>
+                <div class="card-text-container">
+                    <div class="card-title">Ouvrir un ticket d'assistance</div>
+                    <div class="card-action">Accéder à osTicket &rarr;</div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Section Formulaires -->
+        <div class="section-title">Formulaires à télécharger et à renvoyer par email</div>
+        <div class="grid">
+            <a href="docs/Montmagny_Formulaire de Demande Matériel.docx" class="card" target="_blank" download>
+                <svg class="card-icon" viewBox="0 0 24 24">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+                <div class="card-title">Demande de matériel</div>
+                <div class="card-action">Télécharger (DOCX) &darr;</div>
+            </a>
+
+            <a href="docs/Montmagny_Formulaire demande de restauration de données.docx" class="card" target="_blank" download>
+                <svg class="card-icon" viewBox="0 0 24 24">
+                    <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                    <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                </svg>
+                <div class="card-title">Restauration de données</div>
+                <div class="card-action">Télécharger (DOCX) &darr;</div>
+            </a>
+
+            <a href="docs/Montmagny_Formulaire de Demande d'Accès.docx" class="card" target="_blank" download>
+                <svg class="card-icon" viewBox="0 0 24 24">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="8.5" cy="7" r="4"></circle>
+                    <line x1="20" y1="8" x2="20" y2="14"></line>
+                    <line x1="23" y1="11" x2="17" y2="11"></line>
+                </svg>
+                <div class="card-title">Création de compte & Accès</div>
+                <div class="card-action">Télécharger (DOCX) &darr;</div>
+            </a>
+        </div>
+
+        <div style="margin: 0 0 20px; padding: 15px; border: 1px solid #c49a45; border-radius: 8px; background: #fff8e6; color: #333; font-size: 13px; line-height: 1.5;">
+            <strong>⚠️ IMPORTANT – Création de poste :</strong> Si votre demande concerne l'arrivée d'un nouvel agent nécessitant à la fois un ordinateur et un compte utilisateur, merci de compléter et de nous renvoyer les deux formulaires concernés (Demande de matériel ET Création de compte).
+        </div>
+
+        <!-- Section Politique et Règlement -->
+        <div class="section-title">Documents de référence</div>
+        <div class="grid">
+            <a href="LIEN_VERS_POLITIQUE" class="card" target="_blank" download>
+                <svg class="card-icon" viewBox="0 0 24 24">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                <div class="card-title">Politique de la DSI</div>
+                <div class="card-action">Consulter (PDF) &darr;</div>
+            </a>
+
+            <a href="procedure-bonnes-pratiques.html" class="card" target="_self">
+                <svg class="card-icon" viewBox="0 0 24 24">
+                    <path d="M4 4h16v16H4z"></path>
+                    <path d="M7 8h10M7 12h10M7 16h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                <div class="card-title">Procédure et bonnes pratiques</div>
+                <div class="card-action">Aller à la page &rarr;</div>
+            </a>
+        </div>
+
+        <!-- Contacts -->
+        <div style="margin-top: 0; padding: 5px 0 5px 0; border-top: 1px solid var(--border-color); text-align: center; font-size: 13px; color: #666;">
+            <strong>Contacts DSI :</strong> <a href="mailto:informatique@ville-montmagny.fr" style="color: #666; text-decoration: underline;">informatique@ville-montmagny.fr</a> | Rocky NDUALU : 06.35.33.60.20 Anis SEDDIKI : 06.10.25.93.93 | Théo MEURIER : 06.16.26.24.68
+        </div>
+    </div>
+
+    <!-- Pied de page -->
+    <footer style="margin-top: 0; padding-top: 5px; border-top: none;">
+        &copy; 2026 DSI - Ville de Montmagny | Raccourcis internes
+    </footer>
+
+</body>
+</html>
