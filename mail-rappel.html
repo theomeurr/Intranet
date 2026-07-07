@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rappel Cybersécurité - Intranet DSI</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="ctx-mail">
+
+    <div class="topstrip"></div>
+    <div id="announcements"></div>
+
+    <header class="site-header is-sub is-mail">
+        <div class="brand">
+            <img src="assets/logo-mairie-montmagny.png" alt="Ville de Montmagny" class="logo-mairie">
+            <div class="brand-divider"></div>
+            <div>
+                <div class="brand-label">DSI · Cybersécurité</div>
+                <div class="brand-sub" id="hdr-sub">Rappel cybersécurité</div>
+            </div>
+        </div>
+        <img src="assets/logo-intranet.png" alt="Intranet DSI" class="logo-intranet">
+    </header>
+
+    <main class="wrap-mail">
+        <div class="breadcrumb">
+            <a href="intranet.html">Accueil</a>
+            <span>›</span>
+            <a href="cybersécurité.html">Cybersécurité</a>
+            <span>›</span>
+            <span id="bc-current">Rappel cybersécurité</span>
+        </div>
+
+        <article class="mail">
+            <div class="mail-subject">
+                <span class="badge">
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#9A6E1D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V5z"></path></svg>
+                    Rappel de sécurité
+                </span>
+                <h1 id="sujet"></h1>
+            </div>
+
+            <div class="mail-meta">
+                <div class="mail-avatar">DSI</div>
+                <div class="mail-meta-grid">
+                    <span class="k">De</span><span class="v" id="de"></span>
+                    <span class="k">À</span><span class="v" id="a"></span>
+                    <span class="k">Date</span><span class="v" id="date"></span>
+                </div>
+            </div>
+
+            <div class="mail-body" id="corps"></div>
+        </article>
+
+        <a href="cybersécurité.html" class="back-btn">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#9A6E1D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Retour à la cybersécurité
+        </a>
+    </main>
+
+    <footer class="site-footer is-mail">
+        <div class="inner">
+            <span>© 2026 DSI — Ville de Montmagny · Cybersécurité</span>
+            <span class="sig">Ville&nbsp;de&nbsp;Montmagny</span>
+        </div>
+    </footer>
+
+    <script>
+        /* =====================================================================
+           CONTENU DES RAPPELS CYBERSÉCURITÉ
+           ---------------------------------------------------------------------
+           Pour remplir un rappel : complétez les champs de la ligne concernée.
+           Un champ laissé vide ("") conserve le texte-repère d'origine.
+           « corps » : séparez les paragraphes par une ligne vide.
+           ===================================================================== */
+        const RAPPELS = {
+            1: { sujet: "", de: "", date: "", a: "", corps: "" },
+            2: { sujet: "", de: "", date: "", a: "", corps: "" },
+            3: { sujet: "", de: "", date: "", a: "", corps: "" },
+            4: { sujet: "", de: "", date: "", a: "", corps: "" },
+            5: { sujet: "", de: "", date: "", a: "", corps: "" },
+            6: { sujet: "", de: "", date: "", a: "", corps: "" }
+        };
+
+        (function () {
+            let n = parseInt(new URLSearchParams(location.search).get("n"), 10);
+            if (!RAPPELS[n]) n = 1;
+            const r = RAPPELS[n];
+            const titre = "Rappel cybersécurité n°" + n;
+
+            document.title = titre + " - Intranet DSI";
+            document.getElementById("hdr-sub").textContent = titre;
+            document.getElementById("bc-current").textContent = titre;
+            document.getElementById("sujet").textContent = r.sujet || "[Sujet du mail à coller]";
+            document.getElementById("de").textContent   = r.de   || "[Expéditeur]";
+            document.getElementById("a").textContent     = r.a    || "[Destinataires]";
+            document.getElementById("date").textContent  = r.date || "[Date d'envoi]";
+
+            const corps = document.getElementById("corps");
+            const texte = (r.corps || "").trim();
+            if (texte) {
+                texte.split(/\n\s*\n/).forEach(function (para) {
+                    const p = document.createElement("p");
+                    p.textContent = para.trim();
+                    corps.appendChild(p);
+                });
+            } else {
+                const p = document.createElement("p");
+                p.className = "empty";
+                p.textContent = "[Contenu du mail à coller ici]";
+                corps.appendChild(p);
+            }
+        })();
+    </script>
+    <script src="assets/js/announcements.js"></script>
+
+</body>
+</html>

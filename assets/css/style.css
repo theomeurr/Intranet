@@ -1,0 +1,559 @@
+/* =====================================================================
+   Intranet DSI — Ville de Montmagny
+   Système de design (d'après la maquette Claude Design)
+   Polices : Spectral (titres) + Public Sans (texte)
+   ===================================================================== */
+
+:root {
+    --bg:          #FBF9F3;
+    --ink:         #1B1712;
+    --card:        #ffffff;
+
+    --gold-dark:   #8C6410;
+    --gold:        #B8862B;
+    --gold-light:  #E0BE6E;
+    --gold-link:   #9A6E1D;
+
+    --border:      #EDE6D6;
+    --border-soft: #E9E1CF;
+    --divider:     #F0EADB;
+    --chip:        #F6EFDC;
+
+    --muted:       #8A8377;
+    --muted-2:     #A79E8C;
+
+    --serif: 'Spectral', Georgia, 'Times New Roman', serif;
+    --sans:  'Public Sans', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+
+    --hover-shadow: 0 10px 26px rgba(140, 100, 16, .10);
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg);
+    font-family: var(--sans);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ---- Bandeau supérieur doré ---- */
+.topstrip {
+    height: 4px;
+    width: 100%;
+    background: linear-gradient(90deg, #8C6410 0%, #B8862B 45%, #E0BE6E 70%, #B8862B 100%);
+}
+
+/* ---- Bandeau d'annonces (actualités / pannes) ---- */
+.announce-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+body.ctx-mail .announce-inner { max-width: 900px; }
+
+.announce-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 18px;
+    margin-top: 14px;
+    border-radius: 12px;
+    font-size: 13.5px;
+    line-height: 1.5;
+}
+.announce-icon { flex: none; display: flex; }
+.announce-msg { flex: 1; }
+.announce-msg strong { font-weight: 700; }
+.announce-link {
+    flex: none;
+    font-weight: 700;
+    font-size: 12.5px;
+    text-decoration: none;
+    white-space: nowrap;
+    padding: 5px 12px;
+    border-radius: 999px;
+}
+
+.announce-item--info {
+    background: #FBF3DE;
+    border: 1px solid #EBD8A6;
+    border-left: 4px solid var(--gold);
+    color: #5C4A1E;
+}
+.announce-item--info .announce-icon { color: var(--gold-link); }
+.announce-item--info .announce-msg strong { color: #3E3110; }
+.announce-item--info .announce-link { color: var(--gold-link); background: #F0E6C9; }
+
+.announce-item--panne {
+    background: #FBEAEA;
+    border: 1px solid #E2B0AC;
+    border-left: 4px solid #B23B30;
+    color: #6B2620;
+}
+.announce-item--panne .announce-icon { color: #B23B30; }
+.announce-item--panne .announce-msg strong { color: #5A1E18; }
+.announce-item--panne .announce-link { color: #B23B30; background: #F4D9D6; }
+
+/* ---- En-tête ---- */
+.site-header {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 34px 32px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+}
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+.brand-divider {
+    width: 1px;
+    height: 56px;
+    background: #E4DCC9;
+}
+.brand-label {
+    font-family: var(--serif);
+    font-size: 15px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    font-weight: 500;
+}
+.brand-sub {
+    font-size: 14px;
+    color: var(--muted);
+    margin-top: 3px;
+}
+.logo-mairie   { height: 68px; width: auto; display: block; }
+.logo-intranet { height: 78px; width: auto; display: block; }
+
+/* En-tête compact (pages secondaires + rappel) */
+.site-header.is-sub          { padding: 24px 32px 20px; }
+.site-header.is-sub .brand   { gap: 20px; }
+.site-header.is-sub .brand-divider { height: 44px; }
+.site-header.is-sub .brand-label   { font-size: 13px; }
+.site-header.is-sub .brand-sub     { font-size: 13px; margin-top: 2px; }
+.site-header.is-sub .logo-mairie   { height: 52px; }
+.site-header.is-sub .logo-intranet { height: 60px; }
+
+/* ---- Disposition principale ---- */
+.layout {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 28px 32px 40px;
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 28px;
+    align-items: start;
+}
+.sidebar {
+    position: sticky;
+    top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ---- Titres de section ---- */
+.section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin: 4px 0 14px;
+}
+.section-head h2 {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0;
+}
+.section-head .hint { font-size: 12.5px; color: var(--muted-2); }
+.section-head .rule { height: 1px; flex: 1; background: var(--border-soft); }
+.section-head.sm h2 { font-size: 16px; }
+
+/* ---- Grilles ---- */
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 34px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.stack  { display: flex; flex-direction: column; gap: 14px; }
+
+/* ---- Cartes (base) ---- */
+.card {
+    text-decoration: none;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    color: var(--ink);
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--hover-shadow);
+    border-color: #D8C48A;
+}
+.card-chip {
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--chip);
+    border-radius: 11px;
+}
+.card-title { font-weight: 600; font-size: 14.5px; color: var(--ink); }
+.card-cta   { font-size: 12.5px; color: var(--gold-link); font-weight: 600; }
+.card-sub   { font-size: 11.5px; color: var(--muted-2); }
+
+/* Carte formulaire (verticale) */
+.card--form {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.card--form .card-chip { width: 42px; height: 42px; margin-bottom: 4px; }
+
+/* Carte large (guide / procédure / rappel) */
+.card--wide {
+    padding: 20px 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.card--wide .card-chip { width: 44px; height: 44px; }
+.card--wide .card-title { font-size: 15px; line-height: 1.35; }
+.card--wide .card-cta { margin-top: 3px; }
+.card--wide .card-num {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--gold-link);
+}
+
+/* Carte procédure (titre + CTA aux extrémités) */
+.card--fiche { gap: 18px; }
+.card--fiche .card-chip { width: 46px; height: 46px; border-radius: 12px; }
+.card--fiche .card-title { flex: 1; }
+.card--fiche .card-cta { flex: none; white-space: nowrap; }
+
+/* Carte accès rapide (verticale, centrée) */
+.card--quick {
+    padding: 18px 16px;
+    border-radius: 13px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 9px;
+}
+.card--quick:hover { box-shadow: 0 10px 24px rgba(140, 100, 16, .10); }
+.card--quick .card-title { font-size: 13.5px; }
+
+/* ---- Encart d'alerte ---- */
+.alert {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin: 18px 0 34px;
+    padding: 16px 18px;
+    border-radius: 12px;
+    background: #FBF3DE;
+    border: 1px solid #EBD8A6;
+    border-left: 4px solid var(--gold);
+}
+.alert svg { flex: none; margin-top: 1px; }
+.alert p { margin: 0; font-size: 13.5px; line-height: 1.55; color: #5C4A1E; }
+.alert strong { color: #3E3110; }
+
+/* ---- Assistance ---- */
+.assist {
+    text-decoration: none;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    padding: 18px;
+    border-radius: 14px;
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.assist .assist-chip {
+    flex: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.assist .assist-title { display: block; font-weight: 700; font-size: 14.5px; }
+.assist .assist-sub   { display: block; font-size: 12.5px; margin-top: 2px; }
+
+.assist--primary {
+    background: linear-gradient(135deg, #B8862B 0%, #9A6E1D 100%);
+    color: #fff;
+    animation: pulseGold 3.2s ease-in-out infinite;
+}
+.assist--primary .assist-chip { background: rgba(255, 255, 255, .16); }
+.assist--primary .assist-sub  { opacity: .9; }
+.assist--primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(140, 100, 16, .30);
+    animation: none;
+}
+.assist--secondary {
+    background: var(--card);
+    border: 1px solid #E7DFCC;
+    color: var(--ink);
+}
+.assist--secondary .assist-chip { background: var(--chip); }
+.assist--secondary .assist-sub  { color: var(--muted); }
+.assist--secondary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(140, 100, 16, .12);
+    border-color: #C9A652;
+}
+
+@keyframes pulseGold {
+    0%, 100% { box-shadow: 0 1px 2px rgba(140, 100, 16, .10), 0 0 0 0 rgba(184, 134, 43, 0); }
+    50%      { box-shadow: 0 6px 20px rgba(140, 100, 16, .18), 0 0 0 4px rgba(184, 134, 43, .10); }
+}
+
+/* ---- Carte contacts ---- */
+.contacts {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+}
+.contacts-head {
+    padding: 18px 20px 14px;
+    background: linear-gradient(135deg, #1E1B16, #2E2820);
+    color: #F6F1E6;
+}
+.contacts-head .t { font-family: var(--serif); font-size: 16px; font-weight: 600; }
+.contacts-head .s { font-size: 12px; color: #B8AF9A; margin-top: 2px; }
+.contacts-body { padding: 16px 18px 6px; }
+.contact-email {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 11px;
+    background: var(--chip);
+    margin-bottom: 14px;
+    transition: background .18s ease;
+}
+.contact-email:hover { background: #F0E6C9; }
+.contact-email .lbl {
+    display: block;
+    font-size: 11px;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+.contact-email .val { display: block; font-size: 13px; font-weight: 700; color: var(--gold-link); }
+.contact-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 11px 4px;
+    border-bottom: 1px solid var(--divider);
+}
+.contact-row:last-child { border-bottom: none; padding-bottom: 14px; }
+.contact-name  { font-weight: 600; font-size: 14px; color: var(--ink); }
+.contact-phone { font-size: 13px; color: #6E675B; font-variant-numeric: tabular-nums; }
+
+/* ---- Pied de page ---- */
+.site-footer {
+    margin-top: auto;
+    border-top: 1px solid #EAE2D0;
+    background: #F6F2E8;
+}
+.site-footer .inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 20px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 12.5px;
+    color: var(--muted);
+}
+.site-footer .sig { font-family: var(--serif); letter-spacing: .04em; }
+
+/* ---- Fil d'Ariane + bandeau de titre (pages secondaires) ---- */
+.wrap-narrow { max-width: 1240px; margin: 8px auto 0; padding: 0 32px; }
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12.5px;
+    color: var(--muted-2);
+    margin-bottom: 14px;
+}
+.breadcrumb a { color: var(--gold-link); text-decoration: none; font-weight: 600; }
+.page-title {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 1px solid #EAE2D0;
+    padding-bottom: 22px;
+}
+.page-title .pt-chip {
+    flex: none;
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: var(--chip);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.page-title h1 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1.2;
+    margin: 0 0 6px;
+    color: var(--ink);
+}
+.page-title p { margin: 0; font-size: 14px; color: #7A7264; }
+
+/* ---- Carte « retour à l'accueil » (sidebar) ---- */
+.back-card {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 20px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #B8862B 0%, #9A6E1D 100%);
+    color: #fff;
+    transition: transform .18s ease, box-shadow .18s ease;
+}
+.back-card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(140, 100, 16, .28); }
+.back-card .t { display: block; font-weight: 700; font-size: 15px; }
+.back-card .s { display: block; font-size: 12.5px; opacity: .9; }
+
+/* ---- Page Rappel (message) ---- */
+.wrap-mail { max-width: 900px; margin: 0 auto; padding: 8px 32px 48px; }
+.wrap-mail .breadcrumb { margin-bottom: 16px; }
+.site-header.is-mail, .site-footer.is-mail .inner { max-width: 900px; }
+
+.mail {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(140, 100, 16, .06);
+}
+.mail-subject {
+    padding: 26px 32px 22px;
+    border-bottom: 1px solid var(--divider);
+    background: #FCFAF4;
+}
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 11px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--gold-link);
+    background: var(--chip);
+    padding: 5px 11px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+}
+.mail-subject h1 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.25;
+    margin: 0;
+    color: var(--ink);
+}
+.mail-meta {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding: 18px 32px;
+    border-bottom: 1px solid var(--divider);
+}
+.mail-avatar {
+    flex: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #B8862B, #9A6E1D);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 17px;
+}
+.mail-meta-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2px 12px;
+    font-size: 13px;
+    line-height: 1.6;
+}
+.mail-meta-grid .k { color: var(--muted-2); font-weight: 600; }
+.mail-meta-grid .v { color: #3E3626; }
+.mail-body {
+    padding: 30px 32px 34px;
+    font-size: 15px;
+    line-height: 1.75;
+    color: #2C2822;
+}
+.mail-body p { margin: 0 0 16px; }
+.mail-body p:last-child { margin-bottom: 0; }
+.mail-body .empty { color: #9A9184; font-style: italic; }
+.back-btn {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gold-link);
+    padding: 11px 18px;
+    border: 1px solid #E7DFCC;
+    border-radius: 11px;
+    background: var(--card);
+    transition: border-color .18s ease, background .18s ease;
+}
+.back-btn:hover { border-color: #D8C48A; background: #FCFAF4; }
+
+/* ---- Responsive ---- */
+@media (max-width: 760px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { position: static; }
+    .grid-3, .grid-2, .grid-4 { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 520px) {
+    .grid-3, .grid-2, .grid-4 { grid-template-columns: 1fr; }
+    .site-header, .layout, .wrap-narrow, .wrap-mail, .site-footer .inner, .announce-inner { padding-left: 20px; padding-right: 20px; }
+    .site-header { gap: 18px; }
+    .brand { gap: 14px; }
+    .brand-label { letter-spacing: .08em; font-size: 12px; }
+    .logo-intranet, .site-header.is-sub .logo-intranet { height: 54px; }
+    .page-title h1 { font-size: 23px; }
+    .page-title { gap: 14px; }
+}
